@@ -15,19 +15,21 @@
 
 char * addBinary(char * a, char * b)
 {
-	int len_a=strlen(a);//a的长度
+	int len_a=strlen(a);//a的长度 //多关注编程规范、缩进等
     int len_b=strlen(b);//b的长度
-    int m=(strlen(a)>strlen(b)?strlen(a):strlen(b));//m放最大的长度
-    char *n=(char *)malloc(sizeof(char)*m+2);//生成n,有最高位还会逢二进一的情况,还有尾部的'\0',所以大小为最大数组的长度再加二
-    n[m+1]='\0';
+    int m=(strlen(a)>strlen(b)?strlen(a):strlen(b));//m放最大的长度 //strlen可以用len_a len_b代替
+	
+    //指针变量一般用p开头，以便明显区分
+    char *n=(char *)malloc(sizeof(char)*m+2);//生成n,有最高位还会逢二进一的情况,还有尾部的'\0',所以大小为最大数组的长度再加二 
+    n[m+1]='\0'; //malloc返回的指针要判断是否NULL，然后再使用
     for(int i=0;i<m+1;i++)
     {
         n[i]='0';//新数组初始化
     }
-    int t=strlen(n),t1=strlen(n),t2=strlen(n);
+    int t=strlen(n),t1=strlen(n),t2=strlen(n);  //strlen(n)已知，没必要反复调用
     while(len_a!=0 || len_b!=0){
         if(len_a){
-            n[--t1]+=a[--len_a]-48;//n初始化时便为'0',所以减去多余的'0'再加
+            n[--t1]+=a[--len_a]-48;//n初始化时便为'0',所以减去多余的'0'再加  //不建议使用magic number 48，使用'0'会容易理解
         }
         if(len_b){
             n[--t2]+=b[--len_b]-48;
@@ -37,7 +39,7 @@ char * addBinary(char * a, char * b)
             n[t-1]++;//进一位
             n[t]='0';
         }
-        if(n[t]=='3'){
+        if(n[t]=='3'){  //if -> elseif,或者可以和if分支合并处理
             n[t-1]++;
             n[t] = '1';
         }
