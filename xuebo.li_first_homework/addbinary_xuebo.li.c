@@ -19,12 +19,13 @@ char * fun(char *a)
 {
     char *c;
     c = (char *)malloc(10 * sizeof(char));
-    for (int i = 0; i < strlen(a); i++)
+    for (int i = 0; i < strlen(a); i++) //可以使用memncpy函数复制一块buffer
     {
         c[i] = a[strlen(a)-i-1];
     }
     return c; 
 }
+
 char * addBinary(char * a, char * b)
 {   
 
@@ -32,7 +33,7 @@ char * addBinary(char * a, char * b)
     int z = 0;
     char m;
     int i, sum;
-    int j = (strlen(a) > strlen(b)) ? strlen(a) + 1 : strlen(b) + 1;
+    int j = (strlen(a) > strlen(b)) ? strlen(a) + 1 : strlen(b) + 1; //变量命名尽量有意义，比如maxLen之类，简单的j不好理解
     char c[j];
     int num_1[20] = {0};
     int num_2[20] = {0};
