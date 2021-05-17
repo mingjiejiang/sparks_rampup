@@ -20,6 +20,8 @@
 void merge(int* nums1, int m, int* nums2, int n)
 {
     int* nums3 = (int*)malloc(sizeof(int)*(m + n));
+    //num3是否分配成功？需要检测，然后再使用
+    //使用num3固然可以，但受空间限制，一旦分配失败算法就无法实现了
 	int a = 0, n1 = 0, n2 = 0;
 	while (n1 < m && n2 < n)
 	{
