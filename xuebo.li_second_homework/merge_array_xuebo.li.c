@@ -11,6 +11,7 @@
 
 #include "merge_array_xuebo.li.h"
 
+//思路不错，实现很简洁，赞👍
 void merge(int* nums1, int m, int* nums2, int n)
 {   
     __uint32_t idx  = m + n -1; 
