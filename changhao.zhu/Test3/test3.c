@@ -23,19 +23,19 @@
 //参数说明：nums-数组，numsSize-数组的size，target-目标值，returnSize-返回的数组size
 int* twoSum(int* nums, int numsSize, int target, int* returnSize)
 {
-    int *a = (int*)malloc(sizeof(int)*2);
+    int *a = (int*)malloc(sizeof(int)*2);  //malloc的返回值任何时候均需要确认是否为空
     for(int i = 0; i < numsSize-1 ; i++)
     {
         for(int j = i+1; j < numsSize; j++)
         {
             if(nums[i]+nums[j] == target)
             {
-               a[0] = i, a[1] = j;
+               a[0] = i, a[1] = j;  //不推荐这样的用法，两行，两个语句
                return a;
             }
         }
    }
-   *returnSize = 2;
+   *returnSize = 2;   //没有找到，返回应该为0，申请的空间a应该释放
    return 0;
 }
 
